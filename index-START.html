@@ -5,6 +5,7 @@
   <title>JS Drum Kit</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="https://fav.farm/🔥" />
+  <script src="script.js" defer></script>
 </head>
 <body>
   
@@ -61,32 +62,6 @@
   <audio data-key="74" src="sounds/snare.wav"></audio>
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
-
-  <script>
-  // This function removes the 'playing' class from a key element after a transition ends.
-    
-  
-    function playSound(e) { // This function plays a sound when a key is pressed.
-      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);   // Find the audio element corresponding to the pressed key's data-key attribute.
-
-      const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-      if (!audio) return;
-  
-      key.classList.add('playing');
-      audio.currentTime = 0;
-      audio.play();
-    }
-
-    function removeTransition(e) {
-      if (e.propertyName !== 'transform') return;   // Check if the transition property is not 'transform', then return.
-
-      e.target.classList.remove('playing'); // Remove the 'playing' class from the element.
-    }
-  
-    const keys = Array.from(document.querySelectorAll('.key'));
-    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-    window.addEventListener('keydown', playSound);
-  </script>
 
 
 </body>
